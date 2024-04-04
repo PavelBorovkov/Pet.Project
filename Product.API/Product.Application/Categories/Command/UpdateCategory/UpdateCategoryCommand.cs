@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestTask.Domain;
 
-namespace TestTask.Application.Products.Command.UpdateProduct
+namespace TestTask.Application.Categories.Command.UpdateCategory
 {
-    public class UpdateProductCommand:IRequest<Product>
+    public class UpdateCategoryCommand:IRequest<Category>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

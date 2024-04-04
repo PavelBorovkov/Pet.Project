@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace TestTask.Application.Products.Queries.GetProductList
+namespace TestTask.Application.Categories.Queries.GetCategoryList
 {
-    public class GetProductListQuery : IRequest<ProductListVm>
+    public class GetCategoryListQuery : IRequest<CategoryListVm>
     {
         public string? Name { get; set; }
     }

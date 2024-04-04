@@ -10,8 +10,8 @@ namespace TestTask.Application.Interfaces
 {
     public interface ITestTaskDbContext
     {
+        DbSet<Category> Categories { get; set; }
         DbSet<Product> Products { get; set; }
-        DbSet<ProductVersion> ProductVersions { get; set; }
         DbSet<EventLog> EventLogs { get; set; }
 
         //отвечает за сохранение данных в базе

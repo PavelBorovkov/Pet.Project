@@ -3,14 +3,17 @@ using System.Collections.Generic;
 
 namespace TestTask.Domain
 {
-    public partial class Product
+    public partial class Category
     {
+        public Category()
+        {
+            Products = new HashSet<Product>();
+        }
+
         public Guid Id { get; set; }
-        public Guid CategoryID { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
-        public decimal Price { get; set; } 
 
-        public virtual Category Category { get; set; } = null!;
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

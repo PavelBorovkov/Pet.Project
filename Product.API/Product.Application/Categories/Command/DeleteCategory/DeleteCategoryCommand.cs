@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestTask.Domain;
 
-namespace TestTask.Application.Products.Command.DeleteProduct
+namespace TestTask.Application.Categories.Command.DeleteCategory
 {
-    public class DeleteProductCommand:IRequest<Guid>
+    public class DeleteCategoryCommand:IRequest<Guid>
     {
         public Guid Id { get; set; }
     }

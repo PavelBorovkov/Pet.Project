@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestTask.Application.Products.Queries.GetProductInfo
+namespace TestTask.Application.Categories.Queries.GetCategoryInfo
 {
-    public class GetProductInfoQuery: IRequest<ProductInfoVm>
+    public class GetCategoryInfoQuery: IRequest<CategoryInfoVm>
     {
         public Guid Id { get; set; }
     }

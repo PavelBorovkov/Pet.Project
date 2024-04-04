@@ -8,26 +8,26 @@ using TestTask.Application.Interfaces;
 using TestTask.Domain;
 using TestTask.Application.Common.Exceptions;
 
-namespace TestTask.Application.Products.Command.DeleteProduct
+namespace TestTask.Application.Categories.Command.DeleteCategory
 {
-    public class DeleteProductCommandHandler
-        :IRequestHandler<DeleteProductCommand,Guid>
+    public class DeleteCategoryCommandHandler
+        :IRequestHandler<DeleteCategoryCommand,Guid>
     {
         public readonly ITestTaskDbContext _dbContext;
-        public DeleteProductCommandHandler(ITestTaskDbContext dbContext) => _dbContext = dbContext;
+        public DeleteCategoryCommandHandler(ITestTaskDbContext dbContext) => _dbContext = dbContext;
         
         //Unit-тип означающий пустой ответ
-        public async Task<Guid> Handle(DeleteProductCommand request,
+        public async Task<Guid> Handle(DeleteCategoryCommand request,
             CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Products
+            var entity = await _dbContext.Categories
                 .FindAsync(new object[] { request.Id }, cancellationToken);
             
             if (entity == null||entity.Id!=request.Id) 
             {
-                throw new NotFoundException(nameof(Product), request.Id);
+                throw new NotFoundException(nameof(Category), request.Id);
             }
-            _dbContext.Products.Remove(entity);
+            _dbContext.Categories.Remove(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
             
             return entity.Id;

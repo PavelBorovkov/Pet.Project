@@ -10,29 +10,29 @@ using TestTask.Application.Interfaces;
 using TestTask.Application.Common.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace TestTask.Application.Products.Queries.GetProductList
+namespace TestTask.Application.Categories.Queries.GetCategoryList
 {
-    public class GetNoteListQueryHandler
-        :IRequestHandler<GetProductListQuery,ProductListVm>
+    public class GetCategoryListQueryHandler
+        : IRequestHandler<GetCategoryListQuery, CategoryListVm>
     {
         private readonly ITestTaskDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetNoteListQueryHandler(ITestTaskDbContext dbContext, IMapper mapper)
+        public GetCategoryListQueryHandler(ITestTaskDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ProductListVm>Handle(GetProductListQuery request,
+        public async Task<CategoryListVm>Handle(GetCategoryListQuery request,
             CancellationToken cancellationToken)
         {
-            var productQuery = _dbContext.Products.ProjectTo<ProductLookupDto>(_mapper.ConfigurationProvider);
+            var categoryQuery = _dbContext.Categories.ProjectTo<CategoryLookupDto>(_mapper.ConfigurationProvider);
             if (!string.IsNullOrEmpty(request.Name))
             {
-                productQuery = productQuery.Where(p => p.Name.Contains(request.Name));
+                categoryQuery = categoryQuery.Where(p => p.Name.Contains(request.Name));
             }
 
-            return new ProductListVm { Products = productQuery.ToList() };
+            return new CategoryListVm { Categories = categoryQuery.ToList() };
         }
     }
 }

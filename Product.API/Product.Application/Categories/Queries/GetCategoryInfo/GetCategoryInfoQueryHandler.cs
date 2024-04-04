@@ -10,32 +10,32 @@ using TestTask.Application.Interfaces;
 using TestTask.Application.Common.Exceptions;
 using TestTask.Domain;
 
-namespace TestTask.Application.Products.Queries.GetProductInfo
+namespace TestTask.Application.Categories.Queries.GetCategoryInfo
 {
-    public class GetProductInfoQueryHandler
-        :IRequestHandler<GetProductInfoQuery, ProductInfoVm>
+    public class GetCategoryInfoQueryHandler
+        :IRequestHandler<GetCategoryInfoQuery, CategoryInfoVm>
     {
         private readonly ITestTaskDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetProductInfoQueryHandler(ITestTaskDbContext dbContext, IMapper mapper)
+        public GetCategoryInfoQueryHandler(ITestTaskDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
-        public async Task<ProductInfoVm> Handle(GetProductInfoQuery request,
+        public async Task<CategoryInfoVm> Handle(GetCategoryInfoQuery request,
             CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Products
-                .FirstOrDefaultAsync(product => 
-                product.Id == request.Id, cancellationToken);
+            var entity = await _dbContext.Categories
+                .FirstOrDefaultAsync(category =>
+                category.Id == request.Id, cancellationToken);
             
             if (entity == null||entity.Id!=request.Id)
             {
-                throw new NotFoundException(nameof(Product), request.Id);
+                throw new NotFoundException(nameof(Category), request.Id);
             }
-            return _mapper.Map<ProductInfoVm>(entity);
+            return _mapper.Map<CategoryInfoVm>(entity);
         }
     }
 }

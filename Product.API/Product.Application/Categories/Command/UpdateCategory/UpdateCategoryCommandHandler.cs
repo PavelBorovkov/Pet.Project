@@ -9,24 +9,24 @@ using Microsoft.EntityFrameworkCore;
 using TestTask.Application.Common.Exceptions;
 using TestTask.Domain;
 
-namespace TestTask.Application.Products.Command.UpdateProduct
+namespace TestTask.Application.Categories.Command.UpdateCategory
 {
-    public class UpdateProductCommandHandler
-        :IRequestHandler<UpdateProductCommand, Product>
+    public class UpdateCategoryCommandHandler
+        :IRequestHandler<UpdateCategoryCommand, Category>
     {
         private readonly ITestTaskDbContext _dbContext;
 
-        public UpdateProductCommandHandler(ITestTaskDbContext dbContext)=>
+        public UpdateCategoryCommandHandler(ITestTaskDbContext dbContext)=>
             _dbContext = dbContext;
-        public async Task<Product> Handle(UpdateProductCommand request,
+        public async Task<Category> Handle(UpdateCategoryCommand request,
             CancellationToken cancellationToken)
         {
             var entity=
-                await _dbContext.Products.FirstOrDefaultAsync(Product=>
-                    Product.Id==request.Id, cancellationToken);
+                await _dbContext.Categories.FirstOrDefaultAsync(Category=>
+                    Category.Id==request.Id, cancellationToken);
             if (entity == null|| entity.Id!=request.Id)
             {
-                throw new NotFoundException(nameof(Product), request.Id);
+                throw new NotFoundException(nameof(Category), request.Id);
             }
 
             entity.Name = request.Name;
