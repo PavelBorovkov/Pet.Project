@@ -14,7 +14,7 @@ namespace TestTask.Application.Categories.Command.UpdateCategory
             RuleFor(updateCategoryCommand=>
                 updateCategoryCommand.Id).NotEqual(Guid.Empty);
             RuleFor(updateCategoryCommand =>
-                updateCategoryCommand.Name).NotEqual(String.Empty);
+                updateCategoryCommand.Name).NotEqual(string.Empty);
         }
     }
 }
