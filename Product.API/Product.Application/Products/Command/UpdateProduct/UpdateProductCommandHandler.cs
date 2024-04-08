@@ -30,7 +30,6 @@ namespace TestTask.Application.Products.Command.UpdateProduct
             entity.CategoryID = request.CategoryID;
             entity.Name = request.Name;
             entity.Description = request.Description;
-            entity.Id= request.Id;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
             return entity;

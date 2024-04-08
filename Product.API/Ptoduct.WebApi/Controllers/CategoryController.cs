@@ -42,7 +42,7 @@ namespace TestTask.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> CreateCategory([FromForm] CreateCategoryCommand createCategoryCommand)
         {
-            if (!string.IsNullOrEmpty(createCategoryCommand.Name) && !string.Equals(createCategoryCommand.Name, "null"))
+            if (!string.IsNullOrEmpty(createCategoryCommand.Name))
             {
                 var category = await Mediator.Send(createCategoryCommand);
                 return Ok(category);
@@ -54,7 +54,7 @@ namespace TestTask.WebApi.Controllers
         [HttpPut]
         public async Task<ActionResult<Category>> UpdateCategory([FromBody] UpdateCategoryCommand updateCategoryCommand)
         {
-            if (!string.IsNullOrEmpty(updateCategoryCommand.Name) && !string.Equals(updateCategoryCommand.Name, "null"))
+            if (!string.IsNullOrEmpty(updateCategoryCommand.Name))
             {
                 var category = await Mediator.Send(updateCategoryCommand);
                 return Ok(category);
