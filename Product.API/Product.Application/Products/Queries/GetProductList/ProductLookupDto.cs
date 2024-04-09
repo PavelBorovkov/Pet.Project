@@ -23,7 +23,9 @@ namespace TestTask.Application.Products.Queries.GetProductList
                 .ForMember(productDto => productDto.Description,
                 opt => opt.MapFrom(product => product.Description))
                 .ForMember(productDto => productDto.Price,
-                opt => opt.MapFrom(product => product.Price));
+                opt => opt.MapFrom(product => product.Price))
+                .ForMember(productDto => productDto.CategoryID,
+                opt => opt.MapFrom(product => product.CategoryID));
         }
     }
 }

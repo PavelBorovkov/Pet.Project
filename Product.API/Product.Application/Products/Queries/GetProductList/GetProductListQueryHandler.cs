@@ -15,11 +15,16 @@ using TestTask.Application.Interfaces;
 namespace TestTask.Application.Products.Queries.GetProductList
 {
     public class GetProductListQueryHandler
-        :IRequestHandler<GetProductListQuery,ProductListVm>
+        : IRequestHandler<GetProductListQuery, ProductListVm>
     {
         private readonly ITestTaskDbContext _dbContext;
         private readonly IMapper _mapper;
 
+        public GetProductListQueryHandler(ITestTaskDbContext dbContext, IMapper mapper)
+        {
+            _dbContext = dbContext;
+            _mapper=mapper;
+        }
         public async Task<ProductListVm>Handle(GetProductListQuery request,
             CancellationToken cancellationToken)
         {
@@ -28,7 +33,7 @@ namespace TestTask.Application.Products.Queries.GetProductList
             {
                 productQuery=productQuery.Where(p=>p.Name.Contains(request.Name));
             }
-            if (request.CategoryID!=Guid.Empty) 
+            if (request.CategoryID != null)
             {
                 productQuery = productQuery.Where(p => p.CategoryID.Equals(request.CategoryID));
             }
