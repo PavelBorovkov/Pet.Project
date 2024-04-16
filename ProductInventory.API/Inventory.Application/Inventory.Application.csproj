@@ -26,11 +26,4 @@
     <ProjectReference Include="..\Inventory.Domain\Inventory.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ProductInventories\Command\" />
-    <Folder Include="ProductInventories\Queries\" />
-    <Folder Include="Warehouses\Command\" />
-    <Folder Include="Warehouses\Queries\" />
-  </ItemGroup>
-
 </Project>
