@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace Inventory.Application.Warehouses.Queries.GetWarehouseInfo
 {
-    internal class GetWarehouseInfoQuery
+    public class GetWarehouseInfoQuery:IRequest<WarehouseInfoVm>
     {
+        public int Id { get; set; }
     }
 }

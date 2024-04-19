@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Inventory.Application.Warehouses.Queries.GetWarehouseList
 {
-    internal class WarehouseListVm
+    public class WarehouseListVm
     {
+        public IList<WarehouseLookupDto> Warehouses { get; set; }
     }
 }

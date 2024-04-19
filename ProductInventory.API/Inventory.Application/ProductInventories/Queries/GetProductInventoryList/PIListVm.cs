@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Inventory.Application.ProductInventories.Queries.GetProductInventoryList
 {
-    internal class PIListVm
+    public class PIListVm
     {
+        public IList<PILookupDto> ProductInventories { get; set; }
     }
 }
